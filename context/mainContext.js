@@ -101,32 +101,64 @@ export const MainProvider = ({ children }) => {
     setLoading(false);
   }
 
+  const fetchMetaData = async (url, i) => {
+    const obj = {};
+    const baseUrl = "https://ipfs.io/ipfs/QmVLYCDPu5VRRxyJa1ChTk8cNJLTfw5tjLKFQCHXxZCENq/";
+    try {
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      })
+      // console.log("RESPONSE", response);
+      const data = await response.json();
+      // console.log("DATA", data);
+      obj = {
+        name: data.name,
+        description: data.description,
+        image: baseUrl + i + '.png'
+      }
+
+    }
+    catch (error) {
+      obj = {
+        name: "No Name",
+        description: "No Description",
+        image: "./placeholder.png",
+      }
+      // console.log("EROROORGGGG", error)
+    }
+    return obj;
+
+  }
+
   // Get NFTs
   const getNFTs = async () => {
     // setLoading(true)
     const tokenIds = [];
     const baseUrl = "https://ipfs.io/ipfs/QmVLYCDPu5VRRxyJa1ChTk8cNJLTfw5tjLKFQCHXxZCENq/";
+    const baseMetadataUrl = "https://gateway.pinata.cloud/ipfs/QmPbcmBt12acAEGR4VzPqtQ55wB9EeLAao8zmqKFSSheKn/";
+
+    const items = [];
+
     try {
       const { signer, address } = await getSigner();
       const contract = new Contract(NFT_CONTRACT_ADDRESS, NFT_CONTRACT_ABI, signer);
       const nftsBalance = await contract.balanceOf(address);
       for (let i = 0; i < nftsBalance; i++) {
         const tokenId = await contract.tokenOfOwnerByIndex(address, i);
-        tokenIds.push(baseUrl + Number(tokenId) + '.png');
+        let url = baseMetadataUrl + Number(tokenId) + '.json';
+        const o = await fetchMetaData(url, tokenId);
+        items.push(o);
       }
-      setResults(tokenIds);
+      setResults(items);
     }
     catch (error) {
-      console.log(error)
       checkErrorTypeAndNotify(error)
     }
-    // setLoading(false);
-    console.log("DONE GETTING tokenIds", tokenIds);
   }
-
-
-
-
 
   useEffect(() => {
     console.log("Setting up web3 modal")

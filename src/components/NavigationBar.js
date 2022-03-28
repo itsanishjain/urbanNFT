@@ -14,7 +14,7 @@ export default function NavigationBar() {
       </Link>
 
       <Link href="/profile" >
-        <span className="text-xl text-white cursor-pointer">profile</span>
+        <span className="text-xl text-white cursor-pointer">Inventory</span>
       </Link>
       <div className="w-64">
         <GradientButton text={isWalletConnected ? shortenAddress(account) : "Connect"} onClick={connectWallet} />

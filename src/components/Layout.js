@@ -4,10 +4,8 @@ import NavigationBar from "./NavigationBar";
 
 export default function Layout({ children }) {
   return (
-    <div className="h-screen w-scren bg-gradient-to-tr 
-    from-stone-400 to-stone-500 overflow-auto">
+    <div className="h-screen w-scren bg-[#242424] overflow-auto">
       <NavigationBar />
-
       {children}
     </div>
   );
