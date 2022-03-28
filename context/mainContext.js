@@ -103,6 +103,7 @@ export const MainProvider = ({ children }) => {
 
   const fetchMetaData = async (url, i) => {
     const obj = {};
+    // This is for Image
     const baseUrl = "https://ipfs.io/ipfs/QmVLYCDPu5VRRxyJa1ChTk8cNJLTfw5tjLKFQCHXxZCENq/";
     try {
       const response = await fetch(url, {
@@ -136,9 +137,7 @@ export const MainProvider = ({ children }) => {
 
   // Get NFTs
   const getNFTs = async () => {
-    // setLoading(true)
-    const tokenIds = [];
-    const baseUrl = "https://ipfs.io/ipfs/QmVLYCDPu5VRRxyJa1ChTk8cNJLTfw5tjLKFQCHXxZCENq/";
+    // This is for Metadata
     const baseMetadataUrl = "https://gateway.pinata.cloud/ipfs/QmPbcmBt12acAEGR4VzPqtQ55wB9EeLAao8zmqKFSSheKn/";
 
     const items = [];
