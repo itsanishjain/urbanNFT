@@ -165,8 +165,8 @@ export const MainProvider = ({ children }) => {
       network: 'Mumbai',
       providerOptions: {}
     })
-    connectWallet()
-    getNFTs()
+    // connectWallet()
+    // getNFTs()
 
   }, [isWalletConnected])
 

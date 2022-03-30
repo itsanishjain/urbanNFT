@@ -37,7 +37,7 @@ export default function Profile() {
                 </div>
             </div>
             {
-                results && results.length === 0 ? <p className="text-center text-3xl text-white ">You Don't Own any <span className='text-[#10fcc7]'>bao-bao</span> </p> : null
+                results && results.length === 0 ? <p className="text-center text-3xl text-white ">You Don&apos;t Own any <span className='text-[#10fcc7]'>bao-bao</span> </p> : null
             }
         </>
 
