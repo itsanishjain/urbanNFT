@@ -15,7 +15,7 @@ import { WalletLinkConnector } from 'wagmi/connectors/walletLink' // coinbase wa
 
 // const infuraId = process.env.INFURA_ID
 
-const infuraId = "0cafc81691e3444583a6b2ea640227e6"
+const infuraId = ""
 
 
 // Chains for connectors to support

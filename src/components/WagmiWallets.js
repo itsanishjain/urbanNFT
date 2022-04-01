@@ -10,12 +10,12 @@ export default function WagmiWallets() {
 
 
 
-    console.log(data.connectors, "DFADSFADSFADSFDASF")
+    console.log(data, "DFADSFADSFADSFDASF")
 
     if (accountData) {
         return (
             <div className='text-white'>
-                <img src={accountData.ens?.avatar} alt="ENS Avatar" />
+                {/* <img src={accountData.ens?.avatar} alt="ENS Avatar" /> */}
                 <div>
                     {accountData.ens?.name
                         ? `${accountData.ens?.name} (${accountData.address})`
